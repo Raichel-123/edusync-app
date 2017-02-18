@@ -1,0 +1,20 @@
+html
+  head
+    title Header Example
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  body
+    nav.navbar.navbar-inverse
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand(href="#") EduSync
+        ul.nav.navbar-nav.navbar-right
+         li
+           a(href='/') Home
+         li
+           a(href='/courses') Courses
+         li
+           a(href='/courses/mandatory') Mandatory Courses
+         li
+           a(href='/login') Login
+
+    block content
