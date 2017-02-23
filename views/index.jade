@@ -1,6 +1,25 @@
 extends header
 
 block content
-  h1= title
-  h1= rollnumber
-  p Welcome to #{title}
+
+
+    .container
+    .row
+      .col-sm-3
+        .sidebar-nav-inverse
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+            ul.nav.nav-pills.nav-stacked
+                li.active
+                  a(href='#') Menu Item 1
+                li
+                  a(href='#') Menu Item 2
+                li
+                  a(href='#') Menu Item 3
+                li
+                  a(href='#') Menu Item 4
+
+
+            
