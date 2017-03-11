@@ -1,0 +1,13 @@
+extends header
+
+block content 
+	.container-fluid
+		.row-fluid#row
+			.input-group
+				label.input-group-btn
+					label.btn.btn-primary Browse&hellip;
+						input#file-selector(type='file',style="display: none;",accept="video/*")		
+				input#file-name.form-control(type="text",readonly=true)
+			.text-center(style="padding-top:5px;")
+				button#upload.btn.btn-success Upload
+	script(src="/javascript/upload.js")

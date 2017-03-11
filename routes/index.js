@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Yash Pandey', rollnumber: 'Test' });
+  res.render('index', {sidebars: ["Machine Learning","Operating Systems","Database"]});
 });
 
 module.exports = router;

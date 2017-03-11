@@ -1,12 +1,14 @@
 html
   head
     title Header Example
-    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascript/jquery-3.1.1.min.js')
+    script(src='/javascript/bootstrap.min.js')
 
   body
     nav.navbar.navbar-inverse
-        div.container-fluid
+      div.container-fluid
         div.navbar-header
           a.navbar-brand(href="#") EduSync
         ul.nav.navbar-nav.navbar-right
@@ -18,7 +20,4 @@ html
            a(href='/courses/mandatory') Mandatory Courses
          li
            a(href='/login') Login
-
-
-
-  block content
+    block content
