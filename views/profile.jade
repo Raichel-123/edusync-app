@@ -1,0 +1,55 @@
+extends header
+
+block content
+  .main
+    .one
+      .register
+         h1(align='center') Hi!Create your account here!
+          form#reg-form
+  div(align='center')
+    label(for='name') Name:
+    input#name(type='text', spellcheck='false', placeholder='Yash Pandey')
+
+  div(align='center')
+    label(for='email') Email:
+    input#email(type='text', spellcheck='false', placeholder='pandey.yash95@gmail.com')
+
+  div(align='center')
+    label(for='userid') UserID:
+    input#userid(type='text', spellcheck='false', placeholder='1CR13CS120')
+
+  div(align='center')
+      label(for='sem') Semester:
+      input#sem(type='text', spellcheck='false', placeholder='8th')
+
+  div(align='center')
+      label(for='year') Year:
+      input#year(type='text', spellcheck='false', placeholder='4th')
+
+  div(align='center')
+      label(for='10th') 10th Marks:
+      input#10th(type='text', spellcheck='false', placeholder='100%')
+
+  div(align='center')
+      label(for='11th') 11th Marks:
+      input#11th(type='text', spellcheck='false', placeholder='100%')
+
+  div(align='center')
+      label(for='12th') 12th Marks:
+      input#12th(type='text', spellcheck='false', placeholder='100%')
+
+  div(align='center')
+      label(for='enggagregg') engineering marks:
+      input#enggagregg(type='text', spellcheck='false', placeholder='100%')
+
+  div(align='center')
+    label(for='password') Password:
+    input#password(type='password', spellcheck='false', placeholder='**********')
+
+  div(align='center')
+    label(for='password-again') Password Again:
+    input#password-again(type='password', spellcheck='false', placeholder='**********')
+
+  div(align='center')
+    label
+    input#create-account.button(type='submit', value='Create Account')
