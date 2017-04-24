@@ -5,9 +5,8 @@ videojs("my-video").ready(function(){
       console.log(this);
 });
 
-$('#lecturelist li').click(function(e){
-  console.log(e);
-  $('#lecturelist li').removeClass('active');
+$('ul.nav li').click(function(e){
+  $('ul.nav li').removeClass('active');
   $(this).addClass('active');
   myPlayer.src({"type":"video/mp4", "src": "lectures/"+e.target.text });
 });
