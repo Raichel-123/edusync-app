@@ -1,0 +1,70 @@
+extends header
+
+block content
+  .login-wrap
+    .login-html
+      input#tab-1.sign-in(type='radio', name='tab', checked='')
+      label.tab(for='tab-1') Sign In
+      input#tab-2.sign-up(type='radio', name='tab')
+      label.tab(for='tab-2') Sign Up
+      .login-form
+        .sign-in-htm
+          .group
+            label.label(for='user') Username
+            input#user.input(type='text')
+          .group
+            label.label(for='pass') Password
+            input#pass.input(type='password', data-type='password')
+          .group
+            input#check.check(type='checkbox', checked='')
+            label(for='check')
+              span.icon
+              |  Keep me Signed in
+          .group
+            input.button(type='submit', value='Sign In', onclick='validate()')
+          .hr
+          .foot-lnk
+            a(href='#forgot') Forgot Password?
+        .sign-up-htm
+          .group
+            label.label(for='user1') Username
+            input#user1.input(type='text')
+          .group
+            label.label(for='pass1') Password
+            input#pass1.input(type='password', data-type='password')
+          .group
+            label.label(for='pass2') Repeat Password
+            input#pass2.input(type='password', data-type='password')
+          .group
+            label.label(for='email') Email Address
+            input#email.input(type='text')
+            .group
+              label.label(for='name') Student name
+              input#name.input(type='text')
+              .group
+                label.label(for='Sex') SEX
+                input(type='radio', name='gender', value='male', checked='')
+                |  Male
+                input(type='radio', name='gender', value='female')
+                |  Female
+                .group
+                  label.label(for='department') department
+                select(name=' select your department')
+                     option(value='   darpartment')     Select your department
+                     option(value='cse') CSE
+                     option(value='ece') ECE
+                     option(value='is') IS
+
+
+
+          .group
+            input.button(type='submit', value='Sign Up',onclick='check()')
+          .hr
+          .foot-lnk
+            label(for='tab-1')
+              | Already Member?
+              block scripts
+    script(src='/javascripts/jquery-2.2.3.min.js')
+    script(src='/javascripts/jquery.form.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/validate.js')

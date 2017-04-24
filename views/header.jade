@@ -5,6 +5,8 @@ html
     script(src='/socket.io/socket.io.js')
     script(src='/javascript/jquery-3.1.1.min.js')
     script(src='/javascript/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascript/validate.js')
 
   body
     nav.navbar.navbar-inverse
@@ -12,7 +14,7 @@ html
         div.navbar-header
           a.navbar-brand(href="#") EduSync
         ul.nav.navbar-nav.navbar-right
-         li
+         li.active
            a(href='/') Home
          li
            a(href='/courses') Courses
