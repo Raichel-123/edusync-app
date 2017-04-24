@@ -6,8 +6,8 @@ block content
       .col-sm-3
         .sidebar-nav-inverse
           .navbar.navbar-default(role='navigation')
-            ul.nav.nav-pills.nav-stacked  
-              for item, i in sidebars 
+            ul.nav.nav-pills.nav-stacked
+              for item, i in sidebars
                 if i==0
                   li.active
                     a(href='#') #{item}
@@ -15,8 +15,4 @@ block content
                   li
                     a(href='#') #{item}
       .col-sm-9 #{name}
-        
-        
-
-
-            
+      script(src="/javascript/index.js")

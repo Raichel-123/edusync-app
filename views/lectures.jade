@@ -11,19 +11,16 @@ block content
           .col-sm-3
             .sidebar-nav-inverse
               .navbar.navbar-default(role='navigation')
-                ul.nav.nav-pills.nav-stacked  
-                  for item, i in video 
+                ul#lecturelist.nav.nav-pills.nav-stacked
+                  for item, i in video
                     if i==0
                       li.active
                         a(href='#') #{item}
                     else
                       li
                         a(href='#') #{item}
-      .col-sm-9 
+      .col-sm-9
         if video
              video#my-video.video-js(controls,preload="auto",width="640",height="320",data-setup='{"example_option":true}')
                 source(src=defaultVideo type='video/mp4')
   script(src="/javascript/lectures.js")
-
-
-            
