@@ -12,12 +12,8 @@ html(lang='en')
   block content
     .container
       .list-group
-        a.list-group-item#active(href='#')
-          h4.list-group-item-heading Web
-          p.list-group-item-text Programming with web
-        a.list-group-item(href='#')
-          h4.list-group-item-heading Operating Systems
-          p.list-group-item-text Welcome to OS
-        a.list-group-item(href='#')
-          h4.list-group-item-heading Database
-          p.list-group-item-text DBMS
+        for item, i in courses
+          a.list-group-item(href='#')
+            h4.list-group-item-heading #{item.name}
+            h6.list-group-item-heading #{item.type}
+            p.list-group-item-text #{item.description}

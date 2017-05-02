@@ -1,6 +1,9 @@
 extends header
 
 block content
+  script(src='/javascript/jquery.form.min.js')
+  script(src='/javascript/validate.js')
+  link(rel='stylesheet', href='/stylesheets/style.css')
   .login-wrap
     .login-html
       input#tab-1.sign-in(type='radio', name='tab', checked='')
@@ -64,7 +67,3 @@ block content
             label(for='tab-1')
               | Already Member?
               block scripts
-    script(src='/javascripts/jquery-2.2.3.min.js')
-    script(src='/javascripts/jquery.form.min.js')
-    script(src='/javascripts/bootstrap.min.js')
-    script(src='/javascripts/validate.js')
