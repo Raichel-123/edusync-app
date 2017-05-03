@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var upload = require('./routes/upload');
 var lectures = require('./routes/lectures');
 var  login =require('./routes/login');
+var course = require('./routes/course');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -55,6 +56,7 @@ app.use('/', index);
 app.use('/upload', upload);
 app.use('/lectures', lectures);
 app.use('/login',login);
+app.use('/course', course);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
