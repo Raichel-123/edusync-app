@@ -12,12 +12,13 @@ create database edusync;
 use edusync;
 create table student (
 	id int auto_increment primary key,
+	usn char(10) unique,
 	name varchar(56),
 	sem int,
 	year int,
-	10th numeric (3,2),
-	12th numeric(3,2),
-	engg numeric(3,2),
+	10th int,
+	12th int,
+	engg int,
 	email char(255),
 	password varchar(12)
 );
@@ -26,7 +27,7 @@ create table teacher (
 	id int auto_increment primary key,
 	name varchar(35),
 	password varchar(25),
-	email char(250),
+	email char(250) unique,
 	phonenum varchar(12),
 	department varchar(10)
 );

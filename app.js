@@ -3,14 +3,17 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var index = require('./routes/index');
 var upload = require('./routes/upload');
 var lectures = require('./routes/lectures');
-var  login =require('./routes/login');
+var userRoute =require('./routes/user');
 var course = require('./routes/course');
+var faculty = require('./routes/faculty');
+var login = require('./routes/login');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -19,11 +22,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+var sessionOptions = {
+  secret: "secret",
+  resave : true,
+  saveUninitialized : false
+};
+
+app.use(session(sessionOptions));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 io.of('/upload').on('connection', function(user){
   let filename, size, rawData;
@@ -55,8 +67,10 @@ io.of('/upload').on('connection', function(user){
 app.use('/', index);
 app.use('/upload', upload);
 app.use('/lectures', lectures);
-app.use('/login',login);
+app.use('/user',userRoute);
+app.use('/faculty', faculty);
 app.use('/course', course);
+app.use('/login', login);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

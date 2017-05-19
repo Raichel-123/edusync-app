@@ -1,0 +1,29 @@
+extends header
+
+block content
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        form
+          .form-group
+            label Title of the Couse
+            input.form-control(type='text', aria-describedby='title', placeholder='Eg: Introduction to DBMS', name='title')
+          .form-group
+            label Type of Course
+            select.form-control(name="type")
+              option Algorithms
+              option Data Structures
+              option Networks
+              option Operating System
+              option Other
+          .form-group
+            label Level of Course
+            select.form-control(name="level")
+              option Easy
+              option Medium
+              option Difficult
+              option Expert
+          .form-group
+            label() Description
+            textarea.form-control(rows='3', name='description')
+          button.btn.btn-primary(type='submit') Submit
