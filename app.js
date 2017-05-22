@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
+var cookieSession = require('cookie-session')
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
@@ -13,7 +13,9 @@ var lectures = require('./routes/lectures');
 var userRoute =require('./routes/user');
 var course = require('./routes/course');
 var faculty = require('./routes/faculty');
+var analytics = require('./routes/analytics');
 var login = require('./routes/login');
+var assignment = require('./routes/assignment');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -23,16 +25,13 @@ app.set('view engine', 'jade');
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-var sessionOptions = {
-  secret: "secret",
-  resave : true,
-  saveUninitialized : false
-};
-
-app.use(session(sessionOptions));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['ksdfk312j4kj2k3', 'sdjashdj123h123sd']
+}))
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '1000mb'}));
+app.use(bodyParser.urlencoded({limit: '1000mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -71,6 +70,8 @@ app.use('/user',userRoute);
 app.use('/faculty', faculty);
 app.use('/course', course);
 app.use('/login', login);
+app.use('/analytics', analytics);
+app.use('/assignment', assignment);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -80,7 +81,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err);
   res.status(err.status || 500);
   res.render('error');
 });

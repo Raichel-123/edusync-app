@@ -1,0 +1,30 @@
+extends header
+
+block content
+  .container
+    for item, j in items
+      label Group #{j+1}
+      .row(style="margin-bottom: 20px;")
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th USN
+                th 10th
+                th 12th
+                th Engg
+                - var columns = item[0].attempts.split(',').length;
+                - for (var i = 0; i < columns; ++i) {
+                  th Lecture #{i+1}
+                - }
+            tbody
+              for data, i in item
+                tr
+                  td #{i+1}
+                  td #{data.usn}
+                  td #{data["10th"]}%
+                  td #{data["12th"]}%
+                  td #{data["engg"]}%
+                  for l, k in data.attempts.split(',')
+                    td #{l}

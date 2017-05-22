@@ -1,0 +1,50 @@
+extends header
+
+block content
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .list-group
+          for item, i in lectures
+            .list-group-item.list-group-item-action.flex-column.align-items-start(href='#')
+              .d-flex.w-100.justify-content-between
+                label Lecture#{i+1}
+                h3 #{item.name}
+        button.btn.btn-primary#addLectureBtn Add Lecture
+        #addLecture(style="display: none;")
+            h4 Add new lecture
+            .form-group
+                label Title of the Lecture
+                input#title.form-control(type='text', aria-describedby='title', placeholder='Eg: Select Statements', name='title')
+            .form-group
+                label Notes of the lecture
+                input#notes.form-control(type='text', aria-describedby='notes', placeholder='', name='notes')
+            h4 Assigments
+
+            #assignments
+            .form-group
+                label Question
+                input#question.form-control(type='text', aria-describedby='title', placeholder='Eg: Select Statements', name='title')
+            .form-group
+                input#option1.form-control(type='text', aria-describedby='notes', placeholder='option 1', name='notes')
+            .form-group
+                input#option2.form-control(type='text', aria-describedby='notes', placeholder='option 2', name='notes')
+            .form-group
+                input#option3.form-control(type='text', aria-describedby='notes', placeholder='option 3', name='notes')
+            .form-group
+                input#option4.form-control(type='text', aria-describedby='notes', placeholder='option 4', name='notes')
+            .form-group
+                input#correct.form-control(type='text', aria-describedby='notes', placeholder='correct option ', name='notes')
+            button.btn.btn-primary#add-assigment Add Assignment
+            h4 Video
+            .row-fluid#row
+              .input-group
+                label.input-group-btn
+                  label.btn.btn-primary Browse&hellip;
+                    input#file-selector(type='file',style="display: none;",accept="*/*")
+                input#file-name.form-control(type="text",readonly=true)
+            .text-center
+                button.btn.btn-primary#submit(type='submit') Add lecture
+
+        #progress
+        script(src="/javascript/uploadLecture.js")

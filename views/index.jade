@@ -1,19 +1,26 @@
 extends header
 
-doctype html
-html(lang='en')
-  head
-    title Bootstrap Example
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-  block content
-    .container
-      .list-group
-        for item, i in courses
-          a.list-group-item(href='#')
-            h4.list-group-item-heading #{item.name}
-            h6.list-group-item-heading #{item.type}
-            p.list-group-item-text #{item.description}
+block content
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .list-group
+          for item, i in courses
+            .list-group-item(href='#')
+              h3.list-group-item-heading #{item.name}
+              label #{item.tname} &nbsp;
+              - var time = moment(item.created_at).fromNow()
+              label.text-right #{time}
+              p.list-group-item-text(style=" height: 3em;line-height: 1em;overflow: hidden;") #{item.description}
+              .row(style="margin-top: 10px;")
+                .col-md-10.text-left
+                  .span.badge.badge-primary(style="margin-right: 10px;") #{item.type}
+                  .span.badge.badge-primary(style="margin-right: 10px;") #{item.l_cnt} Lectures
+                - var enrolled = (item.enrolled)? "Lectures" : "Enroll"
+                - var link = (item.enrolled) ? '/course/'+item.id + '/1' : "/course/enroll/"+item.id
+                a.col-md-4.col-md-offset-4(href='#{link}')(style="margin-top: 10px;").btn.btn-primary #{enrolled}
+
+
+
+
+

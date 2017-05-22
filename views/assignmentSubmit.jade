@@ -1,0 +1,22 @@
+extends header
+
+block content
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        if pass==true
+          h3 Passed assigment with #{count} questions correct
+        else
+          h3 Failed assignment, please retry again
+        form(method="post", action="")
+          for item, i in items
+            if item.pass==true
+              .panel.panel-success
+                .panel-heading
+                  h3.panel-title
+                    | #{item.question}
+            else
+              .panel.panel-danger
+                .panel-heading
+                  h3.panel-title
+                    | #{item.question}

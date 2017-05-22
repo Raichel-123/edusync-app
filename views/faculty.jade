@@ -5,25 +5,20 @@ block content
     .row
       .col-md-6.col-md-offset-3
         .list-group
-          a.list-group-item.list-group-item-action.flex-column.align-items-start.active(href='#')
-            .d-flex.w-100.justify-content-between
-              h5.mb-1 List group item heading
-              small 3 days ago
-            p.mb-1
-              | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-            small Donec id elit non mi porta.
-          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='#')
-            .d-flex.w-100.justify-content-between
-              h5.mb-1 List group item heading
-              small.text-muted 3 days ago
-            p.mb-1
-              | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-            small.text-muted Donec id elit non mi porta.
-          a.list-group-item.list-group-item-action.flex-column.align-items-start(href='#')
-            .d-flex.w-100.justify-content-between
-              h5.mb-1 List group item heading
-              small.text-muted 3 days ago
-            p.mb-1
-              | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-            small.text-muted Donec id elit non mi porta.
-
+          for item, i in courses
+            .list-group-item.list-group-item-action.flex-column.align-items-start(href='#')
+              .d-flex.w-100.justify-content-between
+                h3.mb-1 #{item.name}
+                label #{item.type}
+              h5
+                | Total-Subscribers &nbsp;
+                span.badge.badge-primary #{item.enrollCnt}
+              h5
+                | Mandatory-Subscribers &nbsp;
+                span.badge.badge-primary #{item.mandatoryCnt}
+              .btn-group()
+                a.btn.btn-primary(href='/faculty/course/#{item.id}') Lectures
+                a.btn.btn-primary(href='/analytics/#{item.id}') Analytics
+                a.btn.btn-primary(href='/analytics/segmentation/#{item.id}') Segmentation
+        .top-30.text-center
+          a.btn.btn-primary(type='button', href='/faculty/create') Add Course

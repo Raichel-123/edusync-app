@@ -4,7 +4,7 @@ block content
   .container
     .row
       .col-md-6.col-md-offset-3
-        form
+        form(method="post", action="/faculty/create")
           .form-group
             label Title of the Couse
             input.form-control(type='text', aria-describedby='title', placeholder='Eg: Introduction to DBMS', name='title')

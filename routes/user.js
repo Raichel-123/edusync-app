@@ -9,6 +9,9 @@ const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@
 
 
 router.get('/login', function(req, res, next) {
+  let loggedIn = (req.session.userId)? true: false;
+  if(loggedIn)
+    res.redirect('/');
   res.render('login');
 });
 
@@ -57,6 +60,9 @@ router.post('/register', function(req, res, next) {
     let query = "insert into student(usn, name, 10th, 12th, engg, email, password) values(?,?,?,?,?,?,?)";
     db.query(query, [data.usn, data.name, parseInt(data.marks10), parseInt(data.marks12), parseInt(data.engg), data.email, data.password])
       .then((result)=>{
+        req.session.type = "student";
+        req.session.email = data.email;
+        req.session.userId = result.insertId;
         return res.redirect('/');
       })
       .catch((err)=>{
@@ -68,7 +74,7 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res, next){
-  delete req.session.destroy();
+  req.session = null;
   res.redirect('/');
 });
 

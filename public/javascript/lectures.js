@@ -1,13 +1,25 @@
-var player;
+var video = videojs('my-video').ready(function(){
+  player = this;
 
-videojs("my-video").ready(function(){
-      myPlayer = this;
-      console.log(this);
-});
+  var duration_time =  Math.floor(this.duration());
 
-$('#lecturelist li').click(function(e){
-  console.log(e);
-  $('#lecturelist li').removeClass('active');
-  $(this).addClass('active');
-  myPlayer.src({"type":"video/mp4", "src": "lectures/"+e.target.text });
+  this.on('timeupdate', function() {
+    duration_time = Math.floor(this.duration());
+    var current_time =  Math.floor(this.currentTime());
+    if ( current_time > 0 && ( current_time == duration_time ) ){
+      window.location = "/assignment"+location.pathname.slice(location.pathname.lastIndexOf("e")+1)
+    }
+  });
+
+  let clicked = false;
+
+  this.one('click', function(e){
+    if(!clicked){
+      clicked = true;
+      $.ajax({
+        type: 'POST',
+        url: "",
+      });
+    }
+  })
 });

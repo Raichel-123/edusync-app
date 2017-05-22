@@ -1,0 +1,43 @@
+extends header
+
+block content
+  script(src="/javascript/video.min.js")
+  link(rel='stylesheet', href='/stylesheets/video-js.min.css')
+  .container-fluid
+    .row-fluid
+      .col-sm-3
+        .sidebar-nav-inverse
+          .navbar.navbar-default(role='navigation')
+            ul#lecturelist.nav.nav-pills.nav-stacked
+              for item, i in lectures
+                if i==curr
+                  li.active
+                    a #{item.name}
+                else
+                  if item.passed==true
+                    li.list-group-item-success
+                      a(href='/course/#{courseId}/#{i+1}') #{item.name}
+                  else
+                    li
+                      a(href='/course/#{courseId}/#{i+1}') #{item.name}
+      .col-sm-9
+        video#my-video.video-js(style="margin: auto;",controls,preload="auto",width="640",height="360",data-setup='{"example_option":true}')
+          source(src='/lectures/#{id}' type='video/mp4')
+        script(src="/javascript/lectures.js")
+        .panel.panel-default(style="margin-top: 20px;")
+          .panel-heading Notes
+          .panel-body #{notes}
+
+        .panel.panel-default(style="margin-top: 20px;")
+          .panel-heading Write to the Faculty
+          .panel-body
+            .form-horizontal
+              .form-group
+                .col-md-12
+                  textarea.form-control(rows='3', placeholder="Question ?", required='')
+                .col-md-12.text-center(style="margin-top: 10px")
+                  button.btn.btn-success Submit
+
+
+
+

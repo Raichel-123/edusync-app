@@ -1,0 +1,52 @@
+extends header
+
+block content
+  .container
+    .row
+      .col-sm-3
+        canvas#pie(height="150", width='150', style="height: 20px;")
+        .text-center(style="margin-top: 10px;")
+          label Average Completetion Rate
+        hr
+      .col-sm-9
+        canvas#views(height='450', width='850')
+        .text-center
+          label Number of views per lecture
+        hr
+        canvas#average(height='450', width='850')
+        .text-center
+          label Average Retries per assignment
+        hr
+        canvas#stack(height='450', width='850')
+        .text-center
+          label Average Retries per assignment
+        hr
+    .table-responsive
+      table.table
+        thead
+          tr
+            th #
+            th USN
+            th Views
+            th Completed
+            th Percentage
+        tbody
+          for item, i in data
+            - var x = parseInt((item.success*100)/(item.success+item.failure))
+              if x>=100
+                tr.success
+                  td #{i}
+                  td #{item.usn}
+                  td #{item.views}
+                  td #{item.success}
+                  td #{x}%
+              else
+                tr
+                  td #{i}
+                  td #{item.usn}
+                  td #{item.views}
+                  td #{item.success}
+                  td #{x}%
+
+        script(src="/javascript/Chart.bundle.min.js")
+        script(src="/javascript/analytics.js")
